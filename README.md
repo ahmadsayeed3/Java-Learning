@@ -1,2 +1,1 @@
-# Java-Learning
-Java Exercises
+# Learning
