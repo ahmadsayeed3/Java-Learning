@@ -1,0 +1,16 @@
+Compiled from "MyClass.java"
+abstract class Day extends java.lang.Enum<Day> {
+  public static final Day MONDAY;
+  public static final Day TUESDAY;
+  public static final Day WEDNESDAY;
+  public static final Day THURSDAY;
+  public static final Day FRIDAY;
+  public static final Day SATURDAY;
+  public static final Day SUNDAY;
+  public static Day[] values();
+  public static Day valueOf(java.lang.String);
+  int getDayNumber();
+  public abstract Day next();
+  Day(java.lang.String, int, int, Day$1);
+  static {};
+}

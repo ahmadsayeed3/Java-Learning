@@ -1,0 +1,1 @@
+set classpath=E:\Java\JavaPrograms\ConnectDatabse\mysql-connector-java-5.1.42-bin.jar;.

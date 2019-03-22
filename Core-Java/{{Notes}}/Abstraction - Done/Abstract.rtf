@@ -1,0 +1,129 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Verdana;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\b\f0\fs36\lang9 Abstraction:\b0\fs22\par
+Abstraction means Show the functionality and Hide the complexity.\par
+\{\{ Aam Kha Ped Mat Geen. Kaam Kisi Aur Ka Karna Kisi Aur Ko Hai. \}\}\par
+\b #. Definition:\b0\par
+\b abstraction\b0  is a process of hiding the implementation details from the user, only the functionality will be provided to the user. In other words, the user will have the information on what the object does instead of how it does.  \par
+\b In case of Abstraction two roles are important.\par
+\b0\tab 1. Developer/Technology that executes the work.\par
+\tab 2. Programmer, who provides the work.\b\par
+#. There are two ways to acheive Abstraction.\b0  \par
+\tab  By \b Abstract\b0  class And By \b Interface\b0  class\par
+
+\pard\sa200\sl276\slmult1\qc\b\fs36 Abstract Class\fs22\par
+
+\pard\sa200\sl276\slmult1 #. In case of Abstract class, there are few required rules that we have to follow to sucessfully acheive abstraction.\b0\par
+\tab\b R-1:\b0  Abstraction can only be used via Inheritance (IS-A relationship), we can not use it through \tab Association.\par
+\tab\b R-2:\b0  A Child class has to Register itself with Parent class by passing Reference of a \tab child class to a parent class. \par
+\tab\b R-3:\b0  For registration, a parent class or developer class has to provide a Method in \tab which child is going to pass the Reference as argument.\par
+\tab\b R-4:\b0  Abstract class can not be instantiated, that means we can not create object of an \tab abstract class. \par
+\b\tab R-5:\b0  A Child has to override all the abstract method of an abstract class, other vise the \tab child class has to make itself as a Abstract. \b\par
+IQ: \b0 Can other calasses can have abstract method?\par
+Ans: No, Only Abstract class can have abstract method.\par
+\b IQ: \b0 Is it mandatory to have at least one method is a abstract class?\par
+Ans: It is not mandatory to have at least one abstract method in a abstract class. \par
+\b IQ: \b0 Can we keep a constructor in abstract class?\par
+Ans: YES we can.\par
+\b IQ: \b0 Can we make an abstract method as a private?\par
+Ans: No, because if we made private abstract method then we  won't be able to override that private methods from outside the abstract class.\par
+\b IQ: \b0 Can we make method in abstract class as private?\b\par
+Ans: \b0  Yes From JDK9, we can have private method in abstra class static and non-static. \line\tab Static methods can use/call in main() method. Non-Static methods can use/call in \tab onstructor. We can also call those methods from child class object. \par
+\b IQ: \b0 Can we make an abstract method as a static?\par
+Ans: NO, we can't make abstract method as static because to acheive Abstraction Method Overriding is required and static functions do not override, they do function Hidding.\par
+\b IQ: \b0 Can we make static method in abstract class.\par
+
+\pard\ri-1530\sa200\sl276\slmult1\tx9360 Ans: Yes. we can make static method in abstract class. We can also have main method in abstract class that menas abstract class can be executable.\par
+\b IQ:  \b0 What is called abstract method?\par
+Ans: A method without body is abstrat method.\par
+
+\pard\ri-1170\sa200\sl276\slmult1\tx8640\b Mine:\par
+
+\pard\sa200\sl276\slmult1\b0 #. To acheive Abstraction, it requires to implement Method Overriding, UpCasting, and Dynamic Binding.\par
+#. Method Overriding will be done by Programmer.\par
+\b #. Demo Program Of Abstraction using Abstract Class\b0\par
+\b //Technology Program\b0\par
+// To create abstract class, we must need to add "\b abstract\b0 " keyword before class declaration syntax. \par
+abstract class AssignmentMaker\{\tab\par
+\tab\b //no class can have without constructor.\par
+\b0\tab AssignmentMaker()\{\par
+\tab\tab System.out.println("Parent Constructor");\par
+\tab\}\par
+\b\tab // It is not require to have abstract method, abstract method does not have body\b0\par
+\tab abstract void makeAssignment();\par
+\tab\b //registration function. Providing registration method to programmer to receiving the \tab child reference id\par
+\b0\tab public void CyberCafe(AssignmentMaker am)\{\par
+\tab\tab // Calling the overriden method that is in child class.\par
+\tab\tab am.makeAssignment(); \par
+\tab\}\par
+\tab\b //static methods are allowed\par
+\b0\tab static void show()\{\par
+\tab\tab System.out.println("Static Show From Parent");\par
+\tab\}\par
+\tab\b // From JDK 9, we can have private method in abstra class static and non-static\par
+\b0\tab\tab private static void methodPrivate()\{\par
+\tab\tab\tab System.out.println("I am Private Method of Abstract Class");\par
+\tab\tab\}\par
+\b\tab // "Abstrac static" method are not allowed\b0\par
+\tab\tab /*       abstract static void display();    */\par
+\tab\b // We can make parent class excutable becasue static methods are allowed\par
+\b0\tab public static void main(String...a)\{\par
+\tab\tab System.out.println("Executing The Abstrac Parent Class Direct");\par
+\tab\tab // also can call static method\par
+\tab\tab show();\par
+\tab\}\par
+\}\par
+\b // Programmer Program\b0\par
+class Student extends AssignmentMaker\{\tab\par
+\tab String assignment = "Java";\par
+\tab //overriding the method defined in technlogy's abstact class\par
+\tab void makeAssignment()\{\par
+\tab\tab // hundred lines of code.\par
+\tab\tab System.out.println(" Code Sent");\tab\par
+\tab\}\par
+\tab public static void main(String...a)\{\par
+\tab\tab\b // Creating child class obect\b0\par
+\tab\tab Student s = new Student();\par
+\b\tab\tab // calling register method of abstract class. Can call parent method from child \tab\tab\tab class object beacuse extended the abstract class\b0\par
+\tab\tab s.CyberCafe(s);\tab\tab\par
+\tab\}\par
+\}\par
+\b IQ: \b0 Why can\rquote t we create the object of an abstract class?\par
+Ans: Because these classes are incomplete, they have abstract methods that have no body so if java allows you to create object of this class then if someone calls the abstract method using that object then What would happen?There would be no actual implementation of the method to invoke.\par
+Also because an object is concrete. An abstract class is like a template, so you have to extend it and build on it before you can use it.\par
+\b Unresolved compilation problem: Cannot instantiate the type AbstractDemo\par
+IQ: \b0 Can we make abstract method as final? Why?\par
+Ans: No, we can't make abstract method as final because we define abstract method for future improvement and once we define it as final, we won't be able to override that method.\par
+\b IQ: \b0 Can we instantiate/make object a abstract class which does not have even a single abstract method?\par
+Ans: No, Once we declared a class as abstract, we can't instantiate.\par
+\b IQ: \b0 We can't instantiate the abstract class then why constructors are allowed in abstract class. \par
+Ans: we can't instantiate the abstract class but their sub classes can instantiate, from sub class we can call the abstract class constructor.\par
+\b IQ: \b0 Can a class contain an abstract class as a member?\par
+Ans: Yes, a class can have a abstract class as it's member. Even abstract class can be nested that means an abstract class can have anothe class as it's member.\par
+\b IQ:\b0   Can Abstract classes can be nested. ?\par
+Ans: Yes, Abstract classes can be nested i.e an abstract class can have another abstract class as it\rquote s member.\par
+\b IQ:\b0  Can we declare local inner class as abstract?\par
+Yes. Local inner class can be abstract.\par
+class ClassOne\{\par
+\tab\b // Nested abstract class\par
+\b0\tab abstract class ClassTwo\{\par
+\tab\tab\b // Nested Abstract class\par
+\b0\tab\tab abstract class ClassThree\{\par
+\tab\tab\}\par
+\tab\}\par
+\tab public void display()\{\par
+\tab\tab\b // local inner class as abstract\par
+\b0\tab\tab abstract class ClassTwo\{\tab\tab\par
+\tab\tab\tab abstract class ClassThree\{\par
+\tab\tab\tab\tab\b // Nested Abstract class\par
+\b0\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\}\par
+\tab public static void main(String...a)\{\tab\tab\par
+\tab\}\par
+\}\par
+\b IQ:\b0  Can abstract method declaration include throws clause?\par
+Ans: Yes. Abstract methods can be declared with throws clause.\par
+\par
+}
+ 

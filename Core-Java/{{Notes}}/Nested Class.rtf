@@ -1,0 +1,190 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\b\f0\fs28\lang9 Nested Class:\b0\fs24\par
+#. A class defined within another class or interface is known as Nested class. The scope of the nested class is bounded by the scope of its enclosing class.\par
+#. Static Nested class and Non-static class both treated as a data member of that class in which they are defined.\par
+Additionally, it can access the members of outer class including private data members and methods.\par
+#. There are two types of nested classes \b non-static\b0  and \b static nested classes\b0 .The non-static nested classes are also known as inner classes.\par
+\b 1. Non-static nested class (inner class)\b0\par
+\tab 1. Member Inner Class: \par
+\tab 2. Local Inner Class: \par
+\tab 2. Anonymous Inner Class\par
+\b 2. Static nested class\b0\par
+\tab 1. Static Nested Class:\par
+\tab 2. Local Inner Class: \par
+\tab 3. Anonymous Inner Class\par
+
+\pard\sa200\sl276\slmult1\qc\b\fs28 Static Nested Class\b0\par
+
+\pard\sa200\sl276\slmult1\fs24 A static class created within class at class level. Static nested class can access all the static data members and member functions of a outer class without any inheritance even if that is private.\par
+Static nested class cannot access non-static (instance) data member or method.\par
+\b IQ:\b0  Can we keep main function in a static nested class.\par
+Yes. Static nested class can be made executable by keeping a main function in it.\par
+If we can make function as static in any class then main() can also keep in that class and it will also be executable.\par
+If we have the static member inside static nested class, we don't need to create instance of static nested class. But if we have non-static function inside static class then it requires to make instance of that static class.\par
+\par
+
+\pard\sa200\sl276\slmult1\qc\b\fs28 Non-Static Nested Member Class:\b0\fs24\par
+
+\pard\sa200\sl276\slmult1 A class created within a class at class level is called member inner class.\par
+#. Non-static nested class can access all the data members and Member functions of its outer class without any inheritance.\par
+#. Non- static Nested class can also do data shadowing. If both outer class and inner class have same name variable.\par
+\b IQ:\b0  Can we keep main() function in a non-static class.\par
+NO. Inner Non-static class cannot have it's own static data member and static member function.\par
+#. If Inner Non-static data member is private then it can't go outside the outer class \par
+#. The java compiler creates two class files in case of inner class. The class file name of inner class is "Outer$Inner". If you want to instantiate inner class, you must have to create the instance of outer class. In such case, instance of inner class is created inside the instance of outer class.\par
+#. The java compiler creates a class file named Outer$Inner in this case. The Member inner class have the reference of Outer class that is why it can access all the data members of Outer class including private.\par
+\par
+
+\pard\sa200\sl276\slmult1\qc\b\fs28 Static And Non-Static Local Class : \b0\par
+
+\pard\sa200\sl276\slmult1\fs24 #. If a class is made inside block except class block then it is called local class. Local class applies rules that local variables applies.\par
+If we want to invoke the methods of local inner class, then we must instantiate this class inside the method.\par
+#. If we make a local class within a static method of a outer class then it can use only the static things of a outer class. \par
+# If we make local class within a non-static function of a outer class then it can access all the things of it's outer class.\par
+#. Local inner class cannot be invoked from outside the method.\par
+
+\pard\sa200\sl276\slmult1\qc\b\fs28 Anonymous Class:\b0\fs24\par
+
+\pard\sa200\sl276\slmult1 #. Anonymous class can be defined and instantiated simontaniously and it can not instantiated more than once. \par
+#. Anonymous class does not have any name.\par
+#. We can not create constructor in anonymous class explicitly but compiler adds implicitly.\par
+#. A anonymous class must be having a parent either an interface or a class.\par
+#. Java Anonymous inner class can be created by two ways:\par
+\tab 1. Class (may be abstract or concrete).\par
+\tab 2. Interface\par
+#. While creating anonymous class, why there is () after "new My()" class name or interface. Because new operator demands constructor syntex to create memory in heap area.\par
+#. We can also hold Reference ID of anonymous class.\par
+# We can't make object of an interface. Interviewer trick like this.\par
+My m = new My()\{\};\par
+interface My\{\}\par
+Don't consider it is making object of interface. That is syntex of anonymous class, where \b My m \b0 is holding refrence if of annonymous calss.\par
+
+\pard\sa200\sl276\slmult1\qc\b\fs28 Inheritance In Nested Class:\b0\fs24\par
+
+\pard\sa200\sl276\slmult1 #. Nested class can also inherit other class and interfaces explicitly.\par
+#. If a class inherits a class then child class Reference id can access everything of parent class including nested class. We don't need to make object of outer class.\par
+#. Whenever we create object of inner class, it also send outer class Reference ID via constructor implicitly. That's why we are able to access class level non-static things inside non-static nested class.\par
+Inside non-static Nested class "\b this\b0 " has its own class Reference Id. To access class level non-static things  we can write syntex as "\b OuterClassName.this.dataMemberName"\b0  or functionName.\par
+\b Till JDK 7 local class variable were required to define as final.\b0\par
+\b Mine:\b0\par
+#. Consider Nested class as Data members, every rule that a data member applied can applied on nested class.\par
+#. Inner class also creates separate .class file. "OuterClassNam$InnerclassName.class".\par
+#. Via Inheritance, we can inherit all nested class in child class because java simply treated nested class as Data members.\par
+\b IQ:\b0  Can we declare nested class inside abstract class?\par
+\par
+
+\pard\sa200\sl276\slmult1\qc\b\fs28 Anonymous Nested Class Example Programs\b0\fs24\par
+
+\pard\sa200\sl276\slmult1\b Way 1:\par
+\b0 interface My\{\par
+\tab void show();\par
+\}\par
+class OuterClass\{\par
+\tab int x =100;\par
+\tab static int y = 200;\par
+// returning reference type data that's why "My" is return type\par
+\tab My display()\{\tab   \par
+\tab // Anonymous Inner Class:  Class does have any name that's why to create memory giving iterface name with constructor systex\par
+\tab\tab return(\par
+\tab\tab\tab new My()\{   \par
+\tab\tab\tab\tab public void show()\{\par
+\tab\tab\tab\tab\tab System.out.println("X is: " + x);\par
+\tab\tab\tab\tab\tab System.out.println("Y is: " + y);\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab );\par
+\tab\}\par
+\tab public static void main(String...a)\{\par
+\tab\tab\b OuterClass o = new OuterClass();\par
+\tab\tab My m = o.display();\par
+\tab\tab m.show();\par
+\b0\tab\tab // Can also do\par
+\tab\tab new OuterClass().display().show();\tab\par
+\tab\}\par
+\}\par
+\b Way 2: \b0 Making class and sending reference id. but that class will garbage after using\par
+// Having parent is required\par
+interface My\{\par
+\tab void show();\par
+\}\par
+// Implementing and overriding the interface\par
+class Temp implements My\{\par
+\tab public void show()\{\par
+\tab\tab System.out.println("From Temp Class Show");\tab\tab\par
+\tab\}\par
+\}\par
+\b\par
+\b0 class OuterClass\{\par
+\tab int x = 100;\par
+\tab static int y = 200;\par
+\tab // m is holding reference id of annonymous class\par
+\tab void display(My m)\{\par
+\tab\tab m.show();\par
+\tab\}\par
+\tab public static void main(String...a)\{\tab\par
+\tab\tab // 1st Way\par
+\tab\tab OuterClass oc = new OuterClass();\par
+\tab\tab oc.display(new Temp());\par
+\tab\tab // Another Way:\par
+\tab\tab OuterClass oc1 = new OuterClass();\par
+\tab\tab oc1.display(\par
+\tab\tab\tab new My()\{\par
+\tab\tab\tab\tab public void show()\{\par
+\tab\tab\tab\tab\tab System.out.println("From Anonymous Class Show");\tab\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab );\par
+\tab\tab // Also can do\par
+\tab\tab new OuterClass().display(\par
+\tab\tab\tab new My()\{\par
+\tab\tab\tab\tab public void show()\{\par
+\tab\tab\tab\tab\tab System.out.println("From Anonymous Class Show");\tab\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab );\par
+\tab\}\par
+\}\par
+\b\par
+Way 3: \b0 We can hold reference id of anonymous class\par
+// Having parent is required\par
+interface My\{\par
+\tab void show();\par
+\}\par
+class OuterClass\{\par
+\tab public static void main(String...a)\{\par
+\tab\tab\b My m\b0  = new My()\{\par
+\tab\tab\tab public void show()\{\par
+\tab\tab\tab\tab System.out.println("From Anonymous Class Show");\tab\par
+\tab\tab\tab\}\par
+\tab\tab\};\par
+\tab\tab m.show();\tab\par
+\tab\}\par
+\}\par
+\par
+#. We can have local nested class in any block including init, static, if, for, and etc except class block.\par
+class IfClass\{\par
+       void display()\{\par
+              if(1==1)\{\par
+\tab        class Inner\{\par
+\tab\tab        void show()\{\par
+\tab\tab\tab        System.out.println("I am Show");\par
+\tab\tab\tab               for(int i =0; i<5; i++)\{\par
+\tab\tab\tab\tab        class InnerFor\{\par
+\tab\tab\tab\tab\tab        void show()\{\par
+\tab\tab\tab\tab\tab\tab System.out.println("Show From Loop");\par
+\tab\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab\}\par
+\tab\tab\tab\tab\tab new InnerFor().show();\par
+\tab\tab\tab\tab\}\par
+\tab\tab\tab\}\par
+\tab\tab\}\par
+\tab\tab new Inner().show();\par
+              \}\tab\par
+       \}\par
+       final public static void main(String...a)\{\par
+\tab new IfClass().display();\par
+       \}\par
+\}\par
+}
+ 

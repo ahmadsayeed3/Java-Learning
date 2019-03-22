@@ -1,0 +1,24 @@
+/*
+How to make executable jar file?
+	We can make ".exe" of java files but Java does not provide this feature. We have to take from third-party.
+		".exe" file will only run on windows platform but ".jar" is able to run on different OS including MAC, Windows, Linux.
+		
+		Only GUI application can execute from executable jar file. Console based application can't execute.
+		We also have to define that which ".class" has to run first because lot's of ".class" will be inside .jar file.
+		For this we have to make ".mf" file and write few commands. ".txt" file also works but the correct way is ".mf" file 
+		
+					Command: "Main-Class: MyClass after that press enter"
+		JVM looks for new line after end of the command so we are giving a new line.
+		
+		Command to make executable .jar file: 	jar cvmf Make1.jar My.mf *.class
+		
+		Applying the command: jar cvfm MyPaint.jar MyFile.mf *.* Extra images sid
+		
+		sub directory does not comes apply *.*  we have to sub directories name explicitly.
+		
+*/
+
+/*
+The other "jugad" way to make executable java file is through ".bat" but it will only run on Windows.
+	create a ".bat" file and put command inside:  javac MyFile.java	
+													java MyClassName

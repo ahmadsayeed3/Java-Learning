@@ -1,0 +1,242 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Verdana;}}
+{\*\generator Riched20 10.0.16299}\viewkind4\uc1 
+\pard\ri-720\sa200\sl276\slmult1\b\f0\fs32\lang9 Interfaces:\b0\fs22\par
+\b #. \b0 The definition provided by the Sun Micro System about interface is that, Interfaces are the contract between a Java programmer and a Java programming language.\par
+Real World Example:\par
+Interfaces looks like a class because it also generates .class file, also has data member, member function, etcetera but Interfaces are not a class, they are a blue print of a class. \par
+Another definition is that Interfaces are used to define standard and interfaces are one of the way to acheive the abstraction.\par
+Interfaces are Implicitly abstract, they cannot be instantiated that means we can not create the object of interfaces. Interfaces never represents an object. \par
+In JDK7, all the interface functions were public and abstract by default, but since Java 8 If the member functions of an Interface are not static and default then they are public and abstract by default.\par
+Since Java 8, interface can have default (non static) and static methods.\par
+Since JDK 9, we are allowed to define private methods in interface. We can have private static and non-static methods in interface from JDK9 onwards and by default all the methods in interface are public. Private Methods are not accesible from outside so we can only execute inside interfaces.\par
+Interface fields are public, static and final by default, and methods are public and abstract.\par
+Since Java 8, we can have method body in interface. But we need to make it default method\par
+\b Rules1: \b0 Java Interface represents IS-A relationship. To make relationship we use "implements" keyword.\par
+Why "implements" keyword? because we do implementation of a contract.\par
+\b Rule 2:\b0  A Child class has to override abstract method of an Interface. Abstract method must be public without any body.\par
+Why? External pacakge issue, if the register class is inside external package.\par
+\b Rule 3:\b0  A Child class can implement more than one interfaces simultaneously (at same time as a group).\par
+\b Rule 4:\b0  If a child class is getting a same method from more than one interfaces then, it has to override that method only once.\par
+\b Rule 5:\b0  If we want to give the body of any non static method in interface then we have to qualify that method with modifiers "default" and this default keyword can only be used within an interface. Java allowed to make method body inside interface for re-engineering purpose.  \par
+\b Rule 6:\b0  If a child class getting a same default method from more than one  interfaces then it has to override that method otherwise it is a compilation error.\par
+\b Rule 7:\b0  If one Interface is getting a same default method from more than one interfaces then child class has to override that method.\par
+\b Rule 8:\b0  Static methods of an Interface are never inherited in a child class. So we can use it by interfaceName.functionName. We don't need follow rules like we do in case of other methods.\par
+\b Rule 9:\b0  From JDK 8, we can make any interface executable by keeping a main method in it.\par
+\b Rule 10:\b0  By default all the data member of an interface are final and static. Data members of an interface are required to initilized while declaration. Data members can inherit in case of interface but they can't override because by default they're final and static. To use interface data members we don't need to implement, we can use them by "interfaceName.fieldNam".\par
+\b Rule 11:\b0  In Java all the interfaces are having all the non-final method of an object class.\par
+\b Mine:\b0  That's why if we create that method in our child class and call it through putting child reference inside interface variable then it won't create error and run successfully. Instead if we create user define and call through interface variable then it will create error.\par
+\b Rule 12:\b0  A class can inherit class and also implement interfaces at a time. \par
+We can inherit method body from other class and abstract method from other interface. It requires to inherit first then Implement. Why?\par
+Because if we implement interface first then it will look for overridden method for it's abstract method and that will come after inheriting the class so it will create compilation error that's why it requires to inherit first then implement. \par
+Real world example: Every product gets body first then it gets cover.\par
+\b Interface Program:\b0\par
+\b // Interface One\b0\par
+interface Computer\{\par
+\tab abstract public void GUI();\par
+\tab abstract public void ALU();\tab\par
+\}\par
+\b // Interface two\b0\par
+interface CPUProcessor\{\par
+\tab abstract public void ALU(int x);\par
+\}\par
+\b // Registration class\b0\par
+class ComputerReg\{\par
+\tab public void reg(Computer c)\{\par
+\tab\tab c.GUI();\par
+\tab\tab c.ALU();\par
+\tab\}\par
+\tab public void CPUReg(CPUProcessor cp)\{\par
+\tab\tab cp.ALU(10);\par
+\tab\}\par
+\}\par
+\par
+\b //Making Windows Computer GUI, Implementin the interfaces\b0\par
+class Windows implements Computer, CPUProcessor\{\par
+\tab static int x = 10;\par
+\tab public static void main(String...a)\{\par
+\tab\tab Windows w = new Windows();\par
+\tab\tab ComputerReg cr = new ComputerReg();\par
+\tab\tab cr.reg(w);\par
+\tab\tab cr.CPUReg(w);\par
+\tab\}\par
+\b\tab // Overriding the abstract methods\b0\par
+\tab public void GUI()\{\par
+\tab\tab //Millions Code of Windows GUI\par
+\tab\tab System.out.println("Windows GUI");\par
+\tab\}\par
+\tab public void ALU()\{\par
+\tab\tab System.out.println("WIndows CPU Processor");\par
+\tab\}\par
+\tab public void ALU(int x)\{\par
+\tab\tab System.out.println( x + " X WIndows CPU Processor");\par
+\tab\}\par
+\}\tab\par
+\}\par
+\b #\fs28 . \b0\fs22 An interface that have no member is known as marker or tagged interface. For example: Serializable, Cloneable, Remote etc. They are used to provide some essential information to the JVM so that JVM may perform some useful operation.\par
+\b Interface inheritance:\b0\par
+One interface can extend another interfaces. One interfaces can extends more than one interfaces simultaneously and this is the situation where we can say that Java supports Multiple inheritance in case of interfaces.\par
+A class implements interface with "\b implements\b0 " keyword but one interface extends another interface with "\b extends\b0 " keyword.\par
+\b // Interface Inheritance\par
+\b0 interface GrandParentInterface\{\par
+\tab public abstract void display();\par
+\}\par
+interface ParentInterface extends GrandParentInterface\{\par
+\tab public abstract void show();\par
+\}\par
+interface ChildInterface extends ParentInterface, GrandParentInterface\{\par
+\tab public abstract void draw();\par
+\tab public abstract void show();  \b // again overwriting the show function\par
+\b0\}\par
+\b Data Member Inheritance:\b0\par
+interface InterfaceOne\{\par
+\tab int x = 50; // by default final and static\par
+\tab int y = 100; // by default final and static\par
+\tab //int z; // error. required to initialized\par
+\}\par
+interface InterfaceTwo\{\par
+\tab int x = 900; // by default final and static\par
+\}\b\fs28\par
+\b0\fs22 class Child implements InterfaceOne\{\par
+\tab int y = 300;\par
+\b /* Can't override becasue x is final. Also it will create new variable.*/\par
+\b0\tab // static int x = 600; \par
+\tab public static void main(String...a)\{\par
+\tab\tab System.out.println(InterfaceOne.x);   \b // working. Prints x value from interface\par
+\b0\tab\tab System.out.println(x); \tab\tab\b // working. Prints x value from interface\par
+\b0\tab\tab System.out.println(InterfaceOne.y); \tab\b // working\par
+\b0\tab\tab //System.out.println(y); \tab\b // error because y is non-static\par
+\b0\tab\tab InterfaceOne io = new Child();\par
+\tab\tab System.out.println(io.y); \tab\b // working\par
+// again working. without implementing InterfaceTwo\tab\tab\par
+\b0\tab\tab System.out.println(InterfaceTwo.x); \par
+\b\tab\tab // now it is non-static new varaiable\b0\par
+\tab\tab Child c = new Child();\par
+\tab\tab System.out.println(c.y);\par
+\tab\}\par
+\}\par
+\par
+\b\fs28 Programs: \par
+\fs22 #. \b0 If one Interface is getting a same default method from more than one interfaces then child class has to override that method.\par
+interface InterfaceOne\{\par
+\tab default void show()\{\par
+\tab\tab System.out.println("InterfaceOne Show");\par
+\tab\}\par
+\}\par
+interface InterfaceTwo\{\par
+\tab default void show()\{\par
+\tab\tab System.out.println("InterfaceTwo Show");\par
+\tab\}\par
+\}\par
+/ \b /here inheriting interface from InterfaceOne and InterfaceTwo that have same defaul function show.\par
+//in this case it requires to override that same default method\b0\par
+interface InterfaceThree extends InterfaceOne, InterfaceTwo\{\par
+\tab // overridding\par
+\tab default void show()\{\par
+\tab\tab System.out.println("InterfaceThree Show");\par
+\tab\}\par
+\}\par
+\b #. Interface with static method with body \{\}\b0\par
+interface InterfaceOne\{\par
+\tab // static methods from interfaces never inherits in child class\par
+\tab static void show()\{\par
+\tab\tab System.out.println("Interface Static Function");\par
+\tab\}\tab\par
+\tab static void display()\{\par
+\tab\tab System.out.println("Interface Display Function");\par
+\tab\}\par
+\}\par
+interface InterfaceTwo\{\par
+\tab static void display()\{\par
+\tab\tab System.out.println("Interface Display Function");\par
+\tab\}\par
+\}\par
+\b #. \b0 Here inheriting interface from InterfaceOne and InterfaceTwo that have same static function display.\par
+\b // In this case it is not require to override that same default method like we do for default method\b0\par
+interface InterfaceThree extends InterfaceOne, InterfaceTwo\{\par
+\tab\b // we don't need to overrride becasue display is static method. \par
+\tab //Static don't override, they do function hidding\par
+\b0\}\par
+class Child implements InterfaceThree\{\par
+\tab static void show()\{\par
+\tab\tab System.out.println("Child Static Function");\par
+\tab\}\par
+\tab public static void main(String... a)\{\par
+\tab\tab\b // static methods from interfaces never inherits in child class\par
+\tab\tab // So we don't need to register\b0\par
+\tab\tab InterfaceOne.show();\par
+\tab\tab show();\par
+\tab\}\tab\par
+\}\par
+\par
+\b #. \b0 We can also extends the method body from other calss and abstract method from other\par
+interface InterfaceTwo\{\par
+\tab void show(); // by default public and abstract\par
+\}\par
+class BodyClass\{\par
+\tab public void show()\{\par
+\tab\tab System.out.println("Show From BodyClass");\par
+\tab\}\par
+\}\par
+\b //We can also extends and implements togeher.\b0\par
+class ChildThree extends BodyClass implements InterfaceTwo\{\tab\par
+\tab public static void main(String...a)\{\par
+\tab\tab InterfaceTwo it = new ChildThree();\par
+\tab\tab it.show();\par
+\tab\}\par
+\}\par
+\b #. \b0 If we want to give the body of any non static method in interface then we have to qualify that method with modifiers "default" and this default keyword can only be used within an interface. Java allowed to make method body inside interface for re-engineering purpose.  \par
+class Child implements InterfaceOne\{\par
+\tab // Non-Static Method Without "default" keyword\par
+\tab public void display()\{\par
+\tab\tab System.out.println("Display");\par
+\tab\}\par
+\tab // Non-Static Method Without "default" keyword\par
+\tab public String toString()\{\par
+\tab\tab return "hello";\par
+\tab\}\tab\par
+\tab public static void main(String...a)\{\par
+\tab\tab InterfaceOne io = new Child();\par
+\tab\tab //io.display(); //error\par
+\b // Works. toString() is inside Object Class, that's why it is running. Above we are doing overriding with toString(). that's why it runs without default keyword.\b0\par
+\tab\tab String s = io.toString();  \par
+\tab\tab System.out.println(s);\par
+\tab\}\par
+\}\par
+\par
+\b IQ:\b0  Can we make non-static variable/field in interface?\par
+Ans: No, we can't make non-static variable in interface because by default all fields of interface are publi static and final.\par
+\b IQ:\b0  Can we declare interface as final?\par
+No. Compile time error will come. Error: Illegal modifier for the interface Sample; only public & abstract are permitted.\par
+\b IQ: \b0 Can we declare constructor  inside an interface?\par
+No. Interfaces does not allow constructors.\par
+\b IQ: \b0 10.How can we access same variables defined in two interfaces implemented by a class?\par
+Ans: By Using corresponding interface.variable_name we can access variables of corresponding interfaces.\par
+
+\pard\sa200\sl276\slmult1\b\fs24 IQ:\b0  We can't make object of an interface. Interviewer trick like this.\par
+\tab interface My\{\par
+\tab\tab // No Method here called "Marker Interface"\par
+\tab\}\par
+\tab class OuterClass\{\par
+\tab\tab public static void main(String...a)\{\par
+\tab\tab\tab My m = new My()\{\}; \tab // This is making an anonymous class.\par
+\tab\tab\}\par
+\tab\}\par
+Don't consider it is making object of interface. That is syntex of anonymous class, where \b My m \b0 is holding refrence of annonymous class. As we know it is required to have parent class or parent interface, here My is interface. This interface has no method that's why it is not demanding to do method overriding.\par
+#. While creating anonymous class, why there is () after "new My()" class name or interface. Because new operator demands constructor syntex to create memory in heap area.\fs22\par
+
+\pard\ri-720\sa200\sl276\slmult1\qc\b\fs28 Difference Between Abstraction And Interfaces:\b0  \par
+
+\pard\ri-720\sa200\sl276\slmult1\fs22 When we want that the more than one parent can perform the same task, then it can only be achieved via Interfaces. \par
+D1: All the data members of an interface class are static and final but abstract class does not.\par
+D2: While giving a body of any method in an interface, we have to make it "\b default\b0 " but this rule does not go with abstract class.\par
+D3: By default all the methods of an interface are public but all the methods of an abstract class are not public.\par
+D4: Static methods of interface never inherited but abstract do static method Inheritance.\par
+D5: If we want object + abstraction then go for abstract class. If we want only abstraction then we go for interface.\par
+D6: If you want reusability + abstraction then up for abstract class. If we want only abstraction then go for interface.\par
+D7: Interfaces are light-weight and  faster than abstract class.\par
+D8: We can implement more than one interface but we cam't extend more than one abstract class.\par
+\b Mine:\b0\par
+To make standard, we need to use abstraction. We won't execute any method of interface but we will only override interface method and provide our work.\par
+\par
+}
+ 

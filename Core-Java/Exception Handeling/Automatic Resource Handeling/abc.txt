@@ -1,0 +1,4 @@
+// Automatic Resource Handler (ARE)
+// We don't need to close the resource explicitly, the JVM will close all resources automatically
+// From JDK 9, We can have parantheses after "try" where we will write syntax to open all resources and JVM-
+//	JVM will automatically close all opened resources when cursor reach at end of try block.
