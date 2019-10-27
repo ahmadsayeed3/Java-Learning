@@ -1,0 +1,40 @@
+package com.cloud.controller;
+
+import java.util.HashMap;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cloud.enums.CONTROLLER;
+import com.cloud.pCloudy.pCloudyProxy;
+
+
+
+@RestController
+public class CloudController {
+	
+	public CloudController() {
+		
+	}
+	
+    @PostMapping(path = CONTROLLER.NAMES.MAIN)
+    public String appiumCloud(@RequestHeader HashMap<String, String> header, @RequestBody JSONObject body) throws ParseException {
+       System.out.println("Request:" + body.toString());
+       pCloudyProxy pcloudyProxy = new pCloudyProxy(body);
+       String response = pcloudyProxy.pass();
+    	return response;
+    }
+    
+    @RequestMapping(value = CONTROLLER.NAMES.STATUS, method = RequestMethod.GET)
+	public JSONObject hello() throws InterruptedException {
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("status", true);
+    	return jsonObject;
+	}
+}

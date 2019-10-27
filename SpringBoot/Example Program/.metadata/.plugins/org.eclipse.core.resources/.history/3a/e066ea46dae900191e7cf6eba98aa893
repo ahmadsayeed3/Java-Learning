@@ -1,0 +1,5 @@
+package com.ssts.pcloudy.appiumhub;
+
+public enum HttpProtocol {
+	GET, POST, DELETE, PUT, OPTIONS;
+}

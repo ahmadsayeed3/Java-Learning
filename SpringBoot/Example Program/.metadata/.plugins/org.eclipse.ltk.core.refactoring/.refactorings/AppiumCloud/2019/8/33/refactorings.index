@@ -1,0 +1,18 @@
+1566051279459	Rename type 'AppiumCloudApplication'
+1566051831829	Rename local variable 'port'
+1566053915439	Rename field 'configurableApplicationContext'
+1566061213658	Rename method 'getPeople'
+1566062724926	Delete element
+1566075621226	Rename package 'com.cloud.appium'
+1566075652450	Rename type 'AppiumCloudController'
+1566075678823	Rename package 'com.cloud.appium.controller'
+1566075721000	Delete element
+1566075765805	Rename package 'com.cloud'
+1566075816576	Rename type 'AppiumCloud'
+1566075953995	Rename method 'getAppiumCloudEndPoint'
+1566077628357	Rename type 'AppiumSocket'
+1566077697287	Rename method 'startSocket'
+1566077870139	Rename type 'AppiumConnection'
+1566077950912	Rename field 'appiumConnection'
+1566078537279	Rename method 'getConnection'
+1566078802754	Rename field 'endpoint'

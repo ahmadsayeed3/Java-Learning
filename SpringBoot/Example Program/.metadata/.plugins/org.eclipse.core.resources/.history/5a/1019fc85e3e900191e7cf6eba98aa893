@@ -1,0 +1,38 @@
+package com.cloud.cloudbase.rest;
+
+import java.util.Map;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.web.client.RestTemplate;
+
+public class WebClient {
+	
+	private String endpoint;
+	private String body;
+	
+	public WebClient(String enpoint, Map<Object, Object> headers, String body) {
+		this.endpoint = enpoint;
+		this.body = body;
+	}
+	
+	public WebClient(String enpoint, String body) {
+		this.endpoint = enpoint;
+		this.body = body;
+	}
+	
+	public String doPostApi() {
+		RestTemplate restTemplate = new RestTemplate();
+		
+		HttpEntity<String> request = new HttpEntity<>(body.trim());
+		request.getHeaders().add("User-Agent", "selenium/3.141.59 (java unix)");
+		System.out.println("Am i comming here... #1 ");
+		String response = restTemplate.postForObject(this.endpoint, request, String.class);
+		System.out.println("Am i comming here... #2 ");
+		return response;
+	}
+	
+	public String doGetApi() {
+		
+		return null;
+	}
+}

@@ -1,0 +1,33 @@
+1566118969809	Rename field 'value'
+1566119567012	Rename type 'DfaultPorts'
+1566119666597	Rename type 'AppiumCloud'
+1566119942089	Rename field 'appiumCloud'
+1566120035012	Move compilation unit
+1566120173748	Rename field 'appiumCloud'
+1566120184193	Rename field 'connection'
+1566120535669	Rename field 'cloud'
+1566121027371	Rename local variable 'endpoint'
+1566121700760	Rename field 'cloudConnection'
+1566122482505	Rename type 'PORTS'
+1566123574760	Rename field 'port'
+1566123664333	Rename method 'getPort'
+1566125687784	Copy compilation unit
+1566125880406	Delete element
+1566125915446	Move compilation unit
+1566125934603	Delete element
+1566126183623	Rename package 'com.cloud.appium'
+1566126202864	Move compilation unit
+1566126206065	Delete element
+1566126298248	Move compilation unit
+1566126402352	Rename type 'Cloud'
+1566127969634	Rename enum constant 'APPIUM_CLOUD'
+1566127999477	Rename enum constant 'BOOT_CLOUD'
+1566128125548	Rename enum constant 'BOOT_CLOUD'
+1566128402911	Rename method 'callPostApi'
+1566128786578	Rename field 'eclipseSocket'
+1566133492098	Rename method 'readHeader'
+1566136337835	Rename method 'setHeader'
+1566144368314	Infer generic type arguments
+1566147077097	Copy compilation units
+1566147093566	Copy package
+1566147128977	Copy package

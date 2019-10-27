@@ -1,0 +1,5 @@
+package com.cloud.enum;
+
+public enum HttpProtocol {
+	GET, POST, DELETE, PUT, OPTIONS;
+}

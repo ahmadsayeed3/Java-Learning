@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;jSon&apos; in &apos;com.cloud.pCloudy.pCloudyProxy.pCloudyProxy(...)&apos; to &apos;jSonBody&apos;&#x0A;- Original project: &apos;pCLoudyService&apos;&#x0A;- Original element: &apos;com.cloud.pCloudy.pCloudyProxy.pCloudyProxy(JSONObject).jSon&apos;&#x0A;- Renamed element: &apos;jSon&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;jSon&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src\/main\/java&lt;com.cloud.pCloudy{pCloudyProxy.java[pCloudyProxy~pCloudyProxy~QJSONObject;@jSon!119!133!130!133!QJSONObject;!0!true" name="jSonBody" references="true" stamp="1566739887001" version="1.0"/>
+</session>
